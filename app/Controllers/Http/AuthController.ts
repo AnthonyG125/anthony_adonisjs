@@ -2,7 +2,7 @@ import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import User from 'App/Models/User'
 import { rules, schema } from '@ioc:Adonis/Core/Validator'
 
-
+//----- Controller pour l'authentification sur le site ------>
 export default class AuthController {
 
   async registerShow({ view }: HttpContextContract) {

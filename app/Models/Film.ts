@@ -13,7 +13,7 @@ export default class Film extends BaseModel {
 
 
   @column()
-  public annee: DateTime
+  public annee: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime

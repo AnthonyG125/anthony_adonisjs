@@ -7,7 +7,7 @@ export default class FilmsSchema extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
       table.string('titre')
-      table.dateTime('annee')
+      table.date('annee')
       table.string('type')
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

@@ -2,13 +2,11 @@
 @set('title', 'Détail du film {{film.name}}')
 
 @section('body')
-<main class="container">
-  <section class="w-50 mx-auto mt-5">
+<div class="container">
     <h1 class="display-2">Détail du film</h1>
-    <hr>
+
     <p>Titre : {{ film.titre}} </p>
     <p>Année : {{ film.annee }} </p>
     <p>Type :  {{ film.type }}</p>
-  </section>
-</main>
+</div>
 @endsection

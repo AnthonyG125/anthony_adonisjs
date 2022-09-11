@@ -3,8 +3,10 @@
 import {HttpContextContract} from "@ioc:Adonis/Core/HttpContext";
 import Film from "App/Models/Film";
 
+//----- Controller des films -------//
 export default class FilmsController {
 
+  //----- Liste des films -----//
   async index ({ view, auth }: HttpContextContract) {
     const films = await Film.all()
 
@@ -27,11 +29,13 @@ export default class FilmsController {
     })
   }
 
+  //---- Creation du film -----//
   async create ({ view }) {
-    return view.render('film/create')
+    return view.render('film/add')
   }
 
 
+  //----- Sauvegarde du film ----//
   async store ({ request, response }) {
     const film = new Film()
 
@@ -44,6 +48,7 @@ export default class FilmsController {
     return response.redirect().toRoute('home')
   }
 
+  //----- Modification du film -----//
   async edit ({ params, view }) {
     const film = await Film.find(params.id)
 
@@ -53,12 +58,13 @@ export default class FilmsController {
     })
   }
 
-  //------ Modification ---> Sa marche pas :(  -----//
+  //------ Ajout de la modification -----//
   async update ({ params, request, response }) {
     const film = await Film.findOrFail(params.id)
 
     film.titre = request.input('titre'),
       film.type = request.input('type'),
+      film.annee = request.input('annee'),
       await film.save()
 
     return response.redirect().toRoute('home')
