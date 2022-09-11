@@ -1,0 +1,71 @@
+@layout('layouts/main')
+@set('title', 'Films')
+
+@section('body')
+<style>
+  body{
+    text-align: center;
+  }
+  table{
+
+    border-collapse: collapse;
+    margin: auto;
+    text-align: center;
+
+
+  }
+
+  thead tr {
+    background-color: #6f93ff ;
+    color: #ffffff ;
+  }
+
+  th, td{
+    border:1px solid black;
+    padding: 10px;
+    vertical-align: top;
+  }
+
+
+  tbody tr:hover {
+    background-color: #3053ff ;
+    color: #ffffff ;
+
+  }
+
+
+
+</style>
+<h2 class="display-5">Liste des films</h2>
+<table>
+  <thead>
+  <tr>
+    <th>Titre</th>
+    <th>Année</th>
+    <th>Type</th>
+    <th>Detail</th>
+    @if(auth.isLoggedIn)
+    <th>Modifier</th>
+    <th>Supprimer</th>
+    @endif
+  </tr>
+  </thead>
+  <tbody>
+  @each(film in films)
+  <tr>
+    <td>{{ film.titre}}</td>
+    <td>{{ film.annee}}</td>
+    <td>{{ film.type}}</td>
+    <td> <a class="custom-link" href="{{ route('film.detail', [film.id]) }}">Detail</a></td>
+    @if(auth.isLoggedIn)
+    <td><a class="btn btn-warning" href="{{ route('film.edit', [film.id]) }}">Modifier</a></td>
+    <td><a class="btn btn-danger" href="{{ route('film.destroy', [film.id]) }}">Supprimer</a></td>
+    @endif
+  @endeach
+  </tbody>
+</table>
+@if(auth.isLoggedIn)
+<a style="margin-top: 0.5rem" class="btn btn-primary " id="ajout" href="{{ route('film.create') }}" role="button">Ajouter un film</a>
+
+@endif
+@end

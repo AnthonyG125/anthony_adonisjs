@@ -1,0 +1,38 @@
+@layout('layouts/main')
+@set('title', 'Ajouter un film')
+
+@section('body')
+<style>
+  .content{
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  h1{
+    text-align: center;
+    color: #2553e1;
+    font-family: Bahnschrift , SemiBold,serif;
+  }
+</style>
+<div class="content">
+
+  <form action="{{ route('film.store') }}" method="POST">
+    <h1>Ajout d'un film </h1>
+    <div class="form-group">
+      <label for="titre">Titre</label>
+      <input type="text" class="form-control" id="titre"/>
+    </div>
+    <div class="form-group">
+      <label for="annee">Année</label>
+      <input type="text" class="form-control" id="annee"/>
+    </div>
+    <div class="form-group" >
+      <label for="type">Type</label>
+      <input type="text" class="form-control" id="type"/>
+    </div>
+    <button style="margin-top:10px" class="btn btn-warning" type="submit">Ajouter</button>
+  </form>
+
+</div>
+
+@endsection

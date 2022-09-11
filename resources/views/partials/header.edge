@@ -1,0 +1,22 @@
+<div class="container">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <span class="fs-4">TD Adonis by Spoit the hacker (Anthony GRAS)</span>
+    </a>
+
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="{{ route('home') }}" class="nav-link">Films</a></li>
+      <li class="nav-item"><a href="{{ route('sante') }}" class="nav-link">Santé</a></li>
+
+      <!---- Vérification si l'utilisateur n'est pas connecter ------>
+      @if(auth.isGuest)
+      <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Connexion</a></li>
+      <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Créer un compte</a></li>
+      @endif
+      <!----- Utilisateur connecter ------>
+      @if(auth.isLoggedIn)
+      <li class="nav-item"><a href="{{ route('logout') }}" class="nav-link">Déconnexion</a></li>
+      @endif
+    </ul>
+  </header>
+</div>

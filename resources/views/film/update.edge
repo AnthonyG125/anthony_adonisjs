@@ -1,0 +1,35 @@
+@layout('layouts/main')
+@set('title', 'Mise à jour du film: {{ movie.name }}')
+
+@section('body')
+<style>
+  .content{
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  h1{
+    text-align: center;
+    color: #e8b520;
+    font-family: Bahnschrift , SemiBold,serif;
+  }
+</style>
+
+<div class="content">
+
+  <form action="{{ route('film.update', [film.id]) }}" method="POST">
+    <h1>Modification du film </h1>
+    <div class="form-group">
+      <label for="titre">Titre</label>
+      <input type="text" class="form-control" id="titre" placeholder="{{ film.titre}}"/>
+    </div>
+    <div class="form-group" >
+      <label for="type">Type</label>
+      <input type="text" class="form-control" id="type" placeholder="{{ film.type}}"/>
+    </div>
+    <button style="margin-top:10px" class="btn btn-warning" type="submit">Valider</button>
+  </form>
+
+</div>
+
+@endsection
